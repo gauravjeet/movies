@@ -1,0 +1,4 @@
+name = Add colorbox class
+description = Add classes to links for colorbox
+core = 7.x
+package = Custom
