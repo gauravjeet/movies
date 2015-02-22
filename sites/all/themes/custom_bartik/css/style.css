@@ -1639,23 +1639,3 @@ div.admin-panel .description {
 #footer-wrapper .poll .bar .foreground {
   background-color: #ddd;
 }
-
-.view-id-movie_preview .view-content .views-field-body {
-  width: 370px;
-  float: left;
-  margin-top: 15px;
-  margin-left: 10px;
-}
-
-.view-id-movie_preview .view-content .views-field-view-node {
-  float: left;
-  margin-top: 10px;
-  border: 1px solid;
-  clear: both;
-}
-
-.view-id-movie_preview .view-content .views-field-field-poster {
-  width: 210px;
-  clear:both;
-  float:left;
-}

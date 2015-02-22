@@ -10,5 +10,6 @@
 function add_colorbox_class_init() {
   if (drupal_is_front_page()) {
     drupal_add_js(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.js');
+    drupal_add_css(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.css');
   }
 }
