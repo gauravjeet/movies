@@ -115,6 +115,20 @@ function custom_bartik_preprocess_node(&$variables) {
 }
 
 /**
+ * Override or insert variables into the page template.
+ */
+function custom_bartik_preprocess_page(&$variables) {
+//echo '<pre>';print_r($variables);die;
+  $page = array('movie-front-page', 'see-all-posters');
+
+  // Add the following on $page only.
+//  if (in_array(arg(0), $page)) {
+    drupal_add_js(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.js');
+    drupal_add_css(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.css');
+//  }
+}
+
+/**
  * Override or insert variables into the block template.
  */
 function custom_bartik_preprocess_block(&$variables) {

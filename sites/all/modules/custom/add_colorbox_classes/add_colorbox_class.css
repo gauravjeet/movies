@@ -17,6 +17,39 @@
   float:left;
 }
 
+.inline-values {
+  float: left;
+  margin-left: 20px;
+}
+
+.views-field-body {
+  float: left;
+  width: 180px;
+  margin-left: 13px;
+}
+
+.views-field-field-poster {
+  float: left;
+}
+
+.movie-view-page {
+  width: 400px;
+}
+
+.poster-image-view {
+  float: left;
+}
+
+.views-field-title {
+  float: left;
+  margin-left: 13px;
+  width: 200px;
+}
+
+#see-all-link {
+  margin-left: 841px;
+}
+
 /*a.add-colorbox-class img {
   display: block;
   -webkit-transition: all 0.15s linear;
