@@ -53,9 +53,25 @@ function adaptivetheme_subtheme_process_html(&$vars) {
 /**
  * Override or insert variables for the page templates.
  */
-/* -- Delete this line if you want to use these functions
-function adaptivetheme_subtheme_preprocess_page(&$vars) {
+function movies_preprocess_page(&$vars) {
+//echo '<pre>';print_r($vars);die;
+  drupal_add_css(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.css');
+
+  // Hide page title and menu on taxonomy/term pages.
+  $arg = arg();
+  if ($arg[0] == 'taxonomy' && $arg[1] == 'term') {
+    drupal_add_css('#main-content-header {display: none;} .year-title{font-size: 2em;font-weight: bold;}', 'inline');
+  }
+
+
+  // Add the following on $page only.
+  if (arg(0) != 'taxonomy' && arg(1) != 'term') {
+    drupal_add_js(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.js');
+  }
 }
+
+
+/*
 function adaptivetheme_subtheme_process_page(&$vars) {
 }
 // */

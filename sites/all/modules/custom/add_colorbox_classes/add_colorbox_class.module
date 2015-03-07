@@ -8,7 +8,5 @@
  * Implements hook_init().
  */
 function add_colorbox_class_init() {
-  if (drupal_is_front_page()) {
 
-  }
 }
