@@ -17,7 +17,7 @@
   float:left;
 }
 
-a.add-colorbox-class img {
+/*a.add-colorbox-class img {
   display: block;
   -webkit-transition: all 0.15s linear;
   -moz-transition: all 0.15s linear;
@@ -32,4 +32,4 @@ a.add-colorbox-class:hover img {
   -ms-transform:scale(1.25);
   -o-transform:scale(1.25);
    transform:scale(1.25);
-}
+}*/
