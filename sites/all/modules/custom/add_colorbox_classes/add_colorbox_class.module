@@ -5,8 +5,8 @@
  */
 
 /**
- * Implements hook_init().
+ * Implements hook_form_alter().
  */
-function add_colorbox_class_init() {
-
+function add_colorbox_class_form_alter(&$form, &$form_state, $form_id) {
+//echo $form_id;
 }

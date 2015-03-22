@@ -64,7 +64,7 @@ function movies_preprocess_page(&$vars) {
   }
 
 
-  // Add the following on $page only.
+  // Add the following on term page only.
   if (arg(0) != 'taxonomy' && arg(1) != 'term') {
     drupal_add_js(drupal_get_path('module', 'add_colorbox_class') . '/add_colorbox_class.js');
   }
