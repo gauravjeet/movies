@@ -71,15 +71,27 @@ a.add-colorbox-class:hover img {
    transform:scale(1.25);
 }*/
 
-.movie-years {
-  line-height: 40px;
-  width: 40px;
-  height: 40px;
+.movie-years a {
   float: left;
-  padding: 50px;
+  padding: 15px;
   margin-left: 30px;
-  margin-top: 50px;
-  text-align: center;
+  margin-top: 15px;
   border-radius: 10px;
-  border: 2px solid gray;
+  border: 2px solid #d5d5d5;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+
+.movie-years a:hover {
+  background: #2f2f2f;
+  -webkit-transform:scale(2);
+  -moz-transform:scale(2);
+  -ms-transform:scale(2);
+  -o-transform:scale(2);
+   transform:scale(2);
+  border: 2px solid #1487d4;
+  color: white;
 }
