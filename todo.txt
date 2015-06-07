@@ -1,0 +1,6 @@
+
+
+ctools modal
+solr search (customize too)
+accordion
+
