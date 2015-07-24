@@ -1,0 +1,130 @@
+<?php
+/**
+ * @file
+ * File to create a modal popup and show an entity inside it.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function modal_entity_menu() {
+  $items['modal/%/%ctools_js/%'] = array(
+    'page callback' => 'entity_modal_popup_form',
+    'page arguments' => array(1, 2, 3),
+    'access arguments' => TRUE,
+  );
+  // $items['entity_modal_example'] = array(
+  //   'title' => 'Example',
+  //   'page callback' => 'drupal_get_form',
+  //   'page arguments' => array('example_modal_entity_form'),
+  //   'access callback' => TRUE,
+  //   'type' => MENU_NORMAL_ITEM,
+  // );
+  return $items;
+}
+
+
+/**
+ * Implements hook_menu().
+ */
+function modal_entity_init() {
+
+  // Use Ctools API to initialize a modal popup.
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_modal_add_js();
+  ctools_add_js('ctools-ajax-form', 'modal_entity');
+  ctools_add_css('ctools-ajax-form', 'modal_entity');
+
+  $modal_entity_style = array(
+    'ctools-modal-entity-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 640,
+        'height' => 480,
+        'addWidth' => 20,
+        'addHeight' => 15,
+      ),
+      'modalOptions' => array(
+        'opacity' => 0.7,
+        'background-color' => '#000',
+      ),
+      'modalTheme' => 'CToolsEntityModal',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
+    ),
+  );
+  drupal_add_js($modal_entity_style, 'setting');
+}
+
+
+/**
+ * Implements menu callback to show a modal popup.
+ */
+function modal_entity_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['entity_modal_view'] = array(
+    'label' => t('Entity Modal View'),
+    'custom settings' => TRUE,
+  );
+}
+
+
+/**
+ * Implements menu callback to show a modal popup.
+ */
+function entity_modal_popup_form($entity_type, $ajax = NULL, $entity_id) {
+  if ($ajax) {
+
+    // Load ctools inc files.
+    ctools_include('modal');
+    ctools_include('ajax');
+
+    $form_state = array(
+      'title' => 'Entity Modal form',
+      'ajax' => TRUE,
+      'entity_type' => $entity_type,
+      'entity_id' => $entity_id,
+      'modal_entity_ajax_run' => TRUE,
+    );
+    $output = ctools_modal_form_wrapper('entity_modal_form', $form_state);
+
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+    print ajax_render($output);
+  }
+  else {
+    return drupal_get_form('entity_modal_form', $entity_type, $entity_id);
+  }
+}
+
+
+/**
+ * Implements menu callback to show a modal popup.
+ */
+// function example_modal_entity_form($form, &$form_state) {
+//   $form['test_form'] = array(
+//     '#markup' => ctools_modal_text_button(t('Click here'), 'modal/node/nojs/15', t('Click here'), 'ctools-modal-ctools-modal-entity-style'),
+//   );
+//   return $form;
+// }
+
+
+/**
+ * Form that is shown inside modal popup.
+ */
+function entity_modal_form($form, &$form_state, $entity_type, $entity_id) {
+  if (isset($form_state['modal_entity_ajax_run'])) {
+    $entity_type = $form_state['entity_type'];
+    $entity_id = $form_state['entity_id'];
+  }
+
+  // Load entity.
+  $entity = entity_load($entity_type, array($entity_id));
+
+  // Render entity.
+  $form['check'] = array(
+    '#markup' => drupal_render(entity_view($entity_type, $entity, 'entity_modal_view')),
+  );
+  return $form;
+}

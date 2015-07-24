@@ -1,0 +1,6 @@
+name = Modal Entity Movies
+description = Custom edits for modal entity module
+core = 7.x
+dependencies[] = modal_entity
+version = 7.x-1.0
+package = Custom

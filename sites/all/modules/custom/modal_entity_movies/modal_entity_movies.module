@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * File to create a modal popup and show an entity inside it.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+	
