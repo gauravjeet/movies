@@ -544,3 +544,108 @@ ul.primary, ul.tabs { clear:both; margin:10px 0 35px 0; white-space: normal }
 ul.primary li, ul.tabs li { padding:10px 0; line-height:130%; }
 
 ul.primary li a, ul.tabs li a { margin:0; padding: 4px 1em; display: inline-block; }
+
+
+
+
+
+/* Custom CSS */
+.view-id-movie_preview .view-content .views-field-body {
+  width: 370px;
+  float: left;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.view-id-movie_preview .view-content .views-field-view-node {
+  float: left;
+  margin-top: 10px;
+  clear: both;
+}
+
+.view-id-movie_preview .view-content .views-field-field-poster {
+  width: 210px;
+  clear:both;
+  float:left;
+}
+
+.inline-values {
+  float: left;
+  margin-left: 20px;
+}
+
+.views-field-body {
+  float: left;
+  width: 180px;
+  margin-left: 13px;
+}
+
+.views-field-field-poster {
+  float: left;
+  width: 290px;
+  height: 360px;
+}
+
+.movie-view-page {
+  width: 340px;
+  margin-top: 30px;
+  margin-left: -28px;
+}
+
+.poster-image-view {
+  float: left;
+}
+
+.views-field-title {
+  float: left;
+  margin-left: 13px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#see-all-link {
+  margin-left: 841px;
+}
+
+/*a.add-colorbox-class img {
+  display: block;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+
+a.add-colorbox-class:hover img {
+  -webkit-transform:scale(1.25);
+  -moz-transform:scale(1.25);
+  -ms-transform:scale(1.25);
+  -o-transform:scale(1.25);
+   transform:scale(1.25);
+}*/
+
+.movie-years a {
+  float: left;
+  padding: 15px;
+  margin-left: 30px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 2px solid #d5d5d5;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+
+.movie-years a:hover {
+  background: #2f2f2f;
+  -webkit-transform:scale(2);
+  -moz-transform:scale(2);
+  -ms-transform:scale(2);
+  -o-transform:scale(2);
+   transform:scale(2);
+  border: 2px solid #1487d4;
+  color: white;
+}
