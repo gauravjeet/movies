@@ -9,24 +9,26 @@
  * Implements hook_menu().
  */
 function modal_entity_menu() {
+
+  // Entity modal.
   $items['modal/%/%ctools_js/%'] = array(
     'page callback' => 'entity_modal_popup_form',
     'page arguments' => array(1, 2, 3),
     'access arguments' => TRUE,
   );
-  // $items['entity_modal_example'] = array(
-  //   'title' => 'Example',
-  //   'page callback' => 'drupal_get_form',
-  //   'page arguments' => array('example_modal_entity_form'),
-  //   'access callback' => TRUE,
-  //   'type' => MENU_NORMAL_ITEM,
-  // );
+
+  // Custom modal.
+  $items['custom/modal/%ctools_js/%'] = array(
+    'page callback' => 'custom_modal_popup_form',
+    'page arguments' => array(2, 3),
+    'access arguments' => TRUE,
+  );
   return $items;
 }
 
 
 /**
- * Implements hook_menu().
+ * Implements hook_init().
  */
 function modal_entity_init() {
 
@@ -59,20 +61,37 @@ function modal_entity_init() {
 
 
 /**
- * Implements menu callback to show a modal popup.
+ * Implements hook_preprocess_entity().
+ */
+function modal_entity_preprocess_node(&$vars) {
+  if ($vars['node']->type == 'movie' && $vars['view_mode'] == 'entity_modal_view') {
+    $vars['theme_hook_suggestions'][] = 'node__movie__entity_modal_view';
+  }
+}
+
+
+/**
+ * Implements hook_entity_info_alter().
  */
 function modal_entity_entity_info_alter(&$entity_info) {
-  $entity_info['node']['view modes']['entity_modal_view'] = array(
-    'label' => t('Entity Modal View'),
-    'custom settings' => TRUE,
-  );
+
+  // Get all entity types.
+  $entities = array_keys($entity_info);
+
+  // Add our view mode for each entity.
+  foreach($entities as $entity) {
+    $entity_info[$entity]['view modes']['entity_modal_view'] = array(
+      'label' => t('Entity Modal View'),
+      'custom settings' => TRUE,
+    );
+  }
 }
 
 
 /**
  * Implements menu callback to show a modal popup.
  */
-function entity_modal_popup_form($entity_type, $ajax = NULL, $entity_id) {
+function entity_modal_popup_form($entity_type, $ajax = NULL, $entity_id, $view_mode = 'entity_modal_view') {
   if ($ajax) {
 
     // Load ctools inc files.
@@ -84,6 +103,7 @@ function entity_modal_popup_form($entity_type, $ajax = NULL, $entity_id) {
       'ajax' => TRUE,
       'entity_type' => $entity_type,
       'entity_id' => $entity_id,
+      'view_mode' => $view_mode,
       'modal_entity_ajax_run' => TRUE,
     );
     $output = ctools_modal_form_wrapper('entity_modal_form', $form_state);
@@ -94,29 +114,19 @@ function entity_modal_popup_form($entity_type, $ajax = NULL, $entity_id) {
     print ajax_render($output);
   }
   else {
-    return drupal_get_form('entity_modal_form', $entity_type, $entity_id);
+    return drupal_get_form('entity_modal_form', $entity_type, $entity_id, $view_mode);
   }
 }
 
 
 /**
- * Implements menu callback to show a modal popup.
+ * Entity form that is shown inside modal popup.
  */
-// function example_modal_entity_form($form, &$form_state) {
-//   $form['test_form'] = array(
-//     '#markup' => ctools_modal_text_button(t('Click here'), 'modal/node/nojs/15', t('Click here'), 'ctools-modal-ctools-modal-entity-style'),
-//   );
-//   return $form;
-// }
-
-
-/**
- * Form that is shown inside modal popup.
- */
-function entity_modal_form($form, &$form_state, $entity_type, $entity_id) {
+function entity_modal_form($form, &$form_state, $entity_type, $entity_id, $view_mode) {
   if (isset($form_state['modal_entity_ajax_run'])) {
     $entity_type = $form_state['entity_type'];
     $entity_id = $form_state['entity_id'];
+    $view_mode = $form_state['view_mode'];
   }
 
   // Load entity.
@@ -124,7 +134,34 @@ function entity_modal_form($form, &$form_state, $entity_type, $entity_id) {
 
   // Render entity.
   $form['check'] = array(
-    '#markup' => drupal_render(entity_view($entity_type, $entity, 'entity_modal_view')),
+    '#markup' => drupal_render(entity_view($entity_type, $entity, $view_mode)),
   );
   return $form;
+}
+
+
+/**
+ * Implements menu callback to show a modal popup.
+ */
+function custom_modal_popup_form($ajax = NULL, $formid) {
+  if ($ajax) {
+
+    // Load ctools inc files.
+    ctools_include('modal');
+    ctools_include('ajax');
+
+    $form_state = array(
+      'title' => 'Custom Modal form',
+      'ajax' => TRUE
+    );
+    $output = ctools_modal_form_wrapper($formid, $form_state);
+
+    if (!empty($form_state['ajax_commands'])) {
+      $output = $form_state['ajax_commands'];
+    }
+    print ajax_render($output);
+  }
+  else {
+    return drupal_get_form($formid);
+  }
 }

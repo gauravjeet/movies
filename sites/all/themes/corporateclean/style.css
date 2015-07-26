@@ -581,9 +581,18 @@ ul.primary li a, ul.tabs li a { margin:0; padding: 4px 1em; display: inline-bloc
 }
 
 .views-field-field-poster {
-  float: left;
-  width: 290px;
-  height: 360px;
+  margin-left: 10px;
+  margin-right: -10px;
+  margin-bottom: 50px;
+}
+
+.views-field-field-poster .my-favorite {
+  margin: 50px;
+}
+
+.views-field-field-poster .field-content {
+  width: 160px;
+  height: 170px;
 }
 
 .movie-view-page {
@@ -648,4 +657,116 @@ a.add-colorbox-class:hover img {
    transform:scale(2);
   border: 2px solid #1487d4;
   color: white;
+}
+
+
+/*Heart shapes for Favorite marking*/
+#heart {
+    position: relative;
+    float: left;
+}
+#heart:before,
+#heart:after {
+    position: absolute;
+    content: "";
+    left: 10px;
+    top: 0;
+    width: 10px;
+    height: 15px;
+    background: red;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+
+#no-heart {
+    position: relative;
+    float: left;	
+}
+#no-heart:before,
+#no-heart:after {
+    position: absolute;
+    content: "";
+    left: 10px;
+    top: 0;
+    width: 10px;
+    height: 15px;
+    background: gray;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+}
+#no-heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+
+.movie-trailer {
+	width: 0;
+	height: 0;
+	cursor: pointer;
+	margin-left: 30px;
+	margin-top: -23px;
+	border-top: 8px solid transparent;
+	border-left: 15px solid gray;
+	border-bottom: 10px solid transparent;
+}
+
+.movie-poster {
+	float: left;
+}
+
+.movie-options {
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	width: 50%;
+}
+
+.movie-body {
+	float: left;
+	margin-left: 10px;
+	width: 60%;
 }
