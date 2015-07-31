@@ -55,7 +55,7 @@ blockquote { background:transparent url('images/blockquote.png') no-repeat top l
 */
 #header { clear:both; }
 
-#header-inside { margin: 0 auto; padding:40px 0; overflow:hidden; } 
+#header-inside { margin: 0 auto; /*padding:40px 0;*/ overflow:hidden; } 
 
 #header-menu { clear:both; }
 
@@ -759,14 +759,50 @@ a.add-colorbox-class:hover img {
 }
 
 .movie-options {
-	float: left;
-	margin-left: 10px;
-	margin-bottom: 20px;
-	width: 50%;
+  margin-left: 75px;
+  position: absolute;
+  top: 310px;
 }
 
 .movie-body {
-	float: left;
-	margin-left: 10px;
-	width: 60%;
+  float: left;
+  left: 220px;
+  top: 51px;
+  width: 65%;
+  position: absolute;
+}
+
+.entity-modal-node-title {
+  position: absolute;
+  left: 45%;
+  top: 11px;
+  width: 50%;
+  text-align: center;
+}
+
+#movie-trailer-field {
+  display: none;
+}
+
+
+.movie-details-icon {
+  padding-left: 1.25em;
+  position: relative;
+}
+
+.movie-details-icon:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.21em;
+  bottom: 0.21em;
+  width: 1em;
+  background: linear-gradient(
+    to bottom, 
+    black, black 20%, 
+    white 20%, white 40%, 
+    black 40%, black 60%, 
+    white 60%, white 80%, 
+    black 80%, black 100%
+  );
 }

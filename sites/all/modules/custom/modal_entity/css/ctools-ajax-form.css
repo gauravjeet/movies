@@ -132,14 +132,3 @@ div.ctools-sample-modal-content tbody{
 div.ctools-sample-modal-content .modal-content .modal-throbber-wrapper img {
   margin-top: 100px;
 }
-
-.popups-title-class .close{
-  margin-top: 10px;
-  margin-right: 15px;
-  overflow: visible;
-  box-shadow: 3px 3px 3px #999999;
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-  color: #777 !important;
-}

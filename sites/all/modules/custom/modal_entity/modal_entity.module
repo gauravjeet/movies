@@ -44,14 +44,16 @@ function modal_entity_init() {
       'modalSize' => array(
         'type' => 'fixed',
         'width' => 640,
-        'height' => 480,
+        'height' => 400,
         'addWidth' => 20,
         'addHeight' => 15,
       ),
       'modalOptions' => array(
         'opacity' => 0.7,
         'background-color' => '#000',
+        'overflow' => 'hidden',
       ),
+      'animation' => 'slow',
       'modalTheme' => 'CToolsEntityModal',
       'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
     ),
